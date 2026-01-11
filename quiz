@@ -1,1 +1,28 @@
-quiz.js
+quiz.jsconst quiz = [
+  {
+    question: "Do they lie?",
+    answers: [
+      { text: "Yes", value: 2 },
+      { text: "Sometimes", value: 1 },
+      { text: "No", value: 0 }
+    ]
+  }
+];
+
+let score = 0;
+
+document.getElementById("question").innerText = quiz[0].question;
+
+quiz[0].answers.forEach(answer => {
+  let button = document.createElement("button");
+  button.innerText = answer.text;
+  button.onclick = () => {
+    score = answer.value;
+    document.getElementById("result").innerText =
+      score === 2 ? "RED FLAG" :
+      score === 1 ? "YELLOW FLAG" :
+      "GREEN FLAG";
+  };
+  document.getElementById("answers").appendChild(button);
+});
+
